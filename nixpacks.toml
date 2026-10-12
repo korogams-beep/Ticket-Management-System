@@ -11,5 +11,6 @@ cmds = [
     "npm run build"
 ]
 
+# Run migrations first, then seed, then cache configs, then start PHP server
 [start]
-cmd = "php artisan migrate --force --seed && php artisan config:cache && php artisan route:cache && php artisan view:cache && php -S 0.0.0.0:$PORT -t public"
+cmd = "php artisan migrate --force && php artisan db:seed --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && php -S 0.0.0.0:$PORT -t public"
