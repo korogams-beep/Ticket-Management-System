@@ -1,4 +1,5 @@
 # Railway Nixpacks configuration for Laravel 12 + Inertia + React
+# Uses php artisan serve which properly handles Laravel routing
 
 [phases.install]
 cmds = [
@@ -11,6 +12,5 @@ cmds = [
     "npm run build"
 ]
 
-# Clear all caches first, then migrate, seed, rebuild caches, then serve
 [start]
-cmd = "php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan migrate --force && php artisan db:seed --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && php -S 0.0.0.0:$PORT -t public"
+cmd = "php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan migrate --force && php artisan db:seed --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=$PORT"
