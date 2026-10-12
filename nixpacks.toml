@@ -1,6 +1,4 @@
 # Railway Nixpacks configuration for Laravel 12 + Inertia + React
-# PHP extensions are auto-detected by Nixpacks from composer.json
-# We only need to define build and start commands.
 
 [phases.install]
 cmds = [
@@ -13,7 +11,5 @@ cmds = [
     "npm run build"
 ]
 
-# Start: migrate (safe, skips already-run), seed (uses firstOrCreate), then serve
-# config/route/view cache runs here so env vars are available
 [start]
-cmd = "php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan migrate --force && php artisan db:seed --force && php -S 0.0.0.0:$PORT -t public"
+cmd = "php artisan migrate --force --seed && php artisan config:cache && php artisan route:cache && php artisan view:cache && php -S 0.0.0.0:$PORT -t public"

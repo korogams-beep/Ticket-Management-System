@@ -11,8 +11,10 @@ class DemoUserSeeder extends Seeder
 {
     public function run(): void
     {
-        // updateOrCreate ensures the account is always up-to-date
-        // even if the email was previously different
+        // Delete old demo account if it still exists
+        User::where('email', 'demo@helpdesk.com')->delete();
+
+        // Create or update the gams@gmail.com demo account
         $user = User::updateOrCreate(
             ['email' => 'gams@gmail.com'],
             [
@@ -21,10 +23,7 @@ class DemoUserSeeder extends Seeder
             ]
         );
 
-        // Also delete any old demo account if it exists
-        User::where('email', 'demo@helpdesk.com')->delete();
-
-        // Seed sample tickets for the demo account
+        // Seed sample tickets
         $samples = [
             [
                 'title'       => 'Printer not working on 2nd floor',
