@@ -45,10 +45,12 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
+            <h2 className="mb-6 text-center text-xl font-bold text-gray-800">Create an account</h2>
+
+            <form onSubmit={submit} className="space-y-5">
                 {/* Name */}
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Full Name" />
                     <TextInput
                         id="name"
                         name="name"
@@ -63,7 +65,7 @@ export default function Register() {
                 </div>
 
                 {/* Email */}
-                <div className="mt-4">
+                <div>
                     <InputLabel htmlFor="email" value="Email" />
                     <TextInput
                         id="email"
@@ -79,7 +81,7 @@ export default function Register() {
                 </div>
 
                 {/* Password */}
-                <div className="mt-4">
+                <div>
                     <InputLabel htmlFor="password" value="Password" />
                     <div className="relative mt-1">
                         <TextInput
@@ -105,7 +107,7 @@ export default function Register() {
                 </div>
 
                 {/* Confirm Password */}
-                <div className="mt-4">
+                <div>
                     <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
                     <div className="relative mt-1">
                         <TextInput
@@ -131,17 +133,17 @@ export default function Register() {
                 </div>
 
                 {/* Submit */}
-                <div className="mt-4 flex items-center justify-end">
-                    <Link
-                        href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                        Already registered?
+                <PrimaryButton className="w-full justify-center" disabled={processing}>
+                    {processing ? 'Creating account…' : 'Register'}
+                </PrimaryButton>
+
+                {/* Login link */}
+                <p className="text-center text-sm text-gray-600">
+                    Already have an account?{' '}
+                    <Link href={route('login')} className="font-semibold text-indigo-600 hover:underline">
+                        Sign in
                     </Link>
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
-                </div>
+                </p>
             </form>
         </GuestLayout>
     );
