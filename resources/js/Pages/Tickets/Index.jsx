@@ -146,7 +146,7 @@ export default function Index({ tickets }) {
                                         }
                                         ${!link.url ? 'opacity-40 pointer-events-none' : ''}
                                     `}
-                                    dangerouslySetInnerHTML={{ __html: link.label }}
+                                    children={link.label.replace('&laquo;', '«').replace('&raquo;', '»')}
                                 />
                             ))}
                         </div>
