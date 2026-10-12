@@ -12,9 +12,9 @@ class DemoUserSeeder extends Seeder
     public function run(): void
     {
         $user = User::firstOrCreate(
-            ['email' => 'demo@helpdesk.com'],
+            ['email' => 'gams@gmail.com'],
             [
-                'name'     => 'Demo User',
+                'name'     => 'Gams',
                 'password' => Hash::make('password'),
             ]
         );
